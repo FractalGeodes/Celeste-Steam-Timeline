@@ -1,0 +1,36 @@
+﻿# Notes for translating:
+#   Terms in ((doubleBrackets)) are substituted with (hopefully) self-explanatory strings
+
+# Mod Options
+  ModOptions_SteamTimeline_RoomsInTooltip_Desc=        Controls if the timeline tooltip includes the room name or only the chapter name.
+  ModOptions_SteamTimeline_DeathMarkerModeSlider=      Death Markers
+  ModOptions_SteamTimeline_DeathMarkerModeSlider_Desc= Enable death events in the timeline for just Golden/Deathless deaths, or for all deaths.
+  ModOptions_SteamTimeline_RoomClearMarkers_Desc=      Add timeline markers on room transitions. May flood the timeline with markers in maps with short rooms.
+
+# Timeline Markers
+  SteamTimeline_DeathMarker=                        You died
+  SteamTimeline_GoldenDeathMarker=                  You died with a Golden
+  SteamTimeline_HeartGemMarker=                     You collected a Crystal Heart
+  SteamTimeline_HeartGemMarker_Fake=                You collected a Crystal Heart?
+  SteamTimeline_LevelCompleteMarker=                You completed ((levelName)) ((sideMarker))
+  SteamTimeline_StrawberryMarker=                   You collected a Strawberry
+  SteamTimeline_GoldenMarker=                       You collected a Golden Berry
+  SteamTimeline_WingedGoldenMarker=                 You collected a Winged Golden
+  SteamTimeline_MoonberryMarker=                    You collected a Moonberry
+  SteamTimeline_CassetteMarker=                     You collected a Cassette
+  SteamTimeline_CassetteMarker_Description=         You unlocked ((levelName)) B-Side
+  SteamTimeline_SummitCheckpointMarker=             You reached Flag ((flagNumber))
+  SteamTimeline_SummitGemMarker=                    You collected a Summit Gem
+  SteamTimeline_RoomClearMarker=                    You cleared ((roomName))
+  SteamTimeline_CheckpointMarker=                   You reached checkpoint ((checkpointName))
+
+# Misc
+
+  # Timeline tooltip that displays the current chapter (and optionally room)
+  # _WithRoom is used if rooms are enabled, otherwise the other one is used
+  SteamTimeline_InGameTooltip=          ((levelName)) ((sideMarker))
+  SteamTimeline_InGameTooltip_WithRoom= ((roomName)) in ((levelName)) ((sideMarker))
+
+  # Used anywhere ((sideMarker)) is.
+  # ((A)) is replaced with B or C when applicable, A-Sides are not marked.
+  SteamTimeline_SideMarker= ((A))-Side

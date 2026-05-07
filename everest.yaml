@@ -1,0 +1,6 @@
+- Name: SteamTimeline
+  Version: 0.1.0
+  DLL: bin/SteamTimeline.dll
+  Dependencies:
+    - Name: EverestCore
+      Version: 1.5935.0
