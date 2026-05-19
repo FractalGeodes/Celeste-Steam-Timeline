@@ -5,3 +5,10 @@ end_of_line = lf
 insert_final_newline = true
 indent_style = tab
 indent_size = 3
+
+align_multiline_calls_chain = true
+brace_style = end_of_line
+keep_existing_arrangement = true
+space_after_cast = true
+
+for_simple_types = use_var_when_evident
