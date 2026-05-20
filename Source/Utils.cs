@@ -9,10 +9,13 @@ public static class Utils {
 		string title,
 		string? description,
 		uint priority,
-		ETimelineEventClipPriority possibleClip
+		ETimelineEventClipPriority possibleClip,
+		float startOffset = 0,
+		float duration = 0
 	) {
-		Steamworks.SteamTimeline.AddTimelineEvent(icon, title, description, priority, 0, 0, possibleClip);
-		Logger.Verbose("SteamTimeline", $"({icon}) {title} : {description}");
+		Steamworks.SteamTimeline.AddTimelineEvent(icon, title, description, priority, startOffset, duration,
+			possibleClip);
+		Logger.Verbose("SteamTimeline", $"({icon}) {title} : {description} | {startOffset} seconds ago for {duration}");
 	}
 
 	public static void SetTimelineTooltip(string description) {
