@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Celeste.Mod.SteamTimeline;
 
 public class SteamTimelineSession : EverestModuleSession {
 	public HashSet<string> CheckpointsSeen { get; set; } = [];
-	public long RoomStartTime;
+	public DateTime RoomStartTime;
 }

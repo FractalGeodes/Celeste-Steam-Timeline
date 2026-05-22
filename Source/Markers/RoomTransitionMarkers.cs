@@ -5,10 +5,10 @@ namespace Celeste.Mod.SteamTimeline.Markers;
 
 public static class RoomTransitionMarkers {
 	private static void OnTransition(Level level, LevelData next, Vector2 direction) {
-		TimeSpan roomStartTime = TimeSpan.FromTicks(SteamTimeline.Session.RoomStartTime);
-		TimeSpan currentTime = TimeSpan.FromTicks(level.Session.Time);
+		DateTime roomStartTime = SteamTimeline.Session.RoomStartTime;
+		DateTime currentTime = DateTime.UtcNow;
 
-		SteamTimeline.Session.RoomStartTime = level.Session.Time;
+		SteamTimeline.Session.RoomStartTime = currentTime;
 
 		if (!SteamTimeline.Settings.RoomClearMarkers || currentTime - roomStartTime < TimeSpan.FromSeconds(5))
 			return;
@@ -27,7 +27,7 @@ public static class RoomTransitionMarkers {
 
 	// We want the marked range to start from the latest respawn, so we reset every spawn.
 	private static void OnSpawn(Player obj) {
-		SteamTimeline.Session.RoomStartTime = ((Level) obj.Scene).Session.Time;
+		SteamTimeline.Session.RoomStartTime = DateTime.UtcNow;
 	}
 
 	[OnLoad]
