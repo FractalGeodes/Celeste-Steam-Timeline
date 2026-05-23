@@ -12,7 +12,7 @@ public static class HeartGemMarker {
 		if (meta?.HeartIsEnd != null && meta.HeartIsEnd.Value && !self.IsFake)
 			return;
 		// Also account for vanilla's hardcoded end on Heart logic.
-		if (session?.Area.GetLevelSet() == "Celeste" && session.Area.Mode != AreaMode.Normal)
+		if (session?.Area.GetLevelSet() == "Celeste" && (session.Area.Mode != AreaMode.Normal || session.Area.ID == 9))
 			return;
 
 		string poemId = null;
