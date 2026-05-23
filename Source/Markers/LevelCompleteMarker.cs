@@ -12,12 +12,16 @@ public static class LevelCompleteMarker {
 		if (areaMode is not AreaMode.Normal)
 			sideMarker = "SideMarker".Localize().Replace("((A))", ((char) ('A' + areaMode)).ToString());
 
+		var markerDialogKey = "LevelCompleteMarker";
+		if (session.FullClear)
+			markerDialogKey = "LevelFullClearMarker";
+
 		AddTimelineMarker(
 			"steam_flag",
-			"LevelCompleteMarker".Localize()
-			                     .Replace("((levelName))", levelName)
-			                     .Replace("((sideMarker))", sideMarker)
-			                     .Trim(),
+			markerDialogKey.Localize()
+			               .Replace("((levelName))", levelName)
+			               .Replace("((sideMarker))", sideMarker)
+			               .Trim(),
 			null, 2, ClipPriority.Featured
 		);
 	}

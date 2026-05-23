@@ -13,6 +13,7 @@
   SteamTimeline_HeartGemMarker=                     You collected a Crystal Heart
   SteamTimeline_HeartGemMarker_Fake=                You collected a Crystal Heart?
   SteamTimeline_LevelCompleteMarker=                You completed ((levelName)) ((sideMarker))
+  SteamTimeline_LevelFullClearMarker=               You full cleared ((levelName)) ((sideMarker))
   SteamTimeline_StrawberryMarker=                   You collected a Strawberry
   SteamTimeline_GoldenMarker=                       You collected a Golden Berry
   SteamTimeline_WingedGoldenMarker=                 You collected a Winged Golden
