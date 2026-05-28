@@ -5,7 +5,7 @@
   ModOptions_SteamTimeline_RoomsInTooltip_Desc=        Controls if the timeline tooltip includes the room name or only the chapter name.
   ModOptions_SteamTimeline_DeathMarkerModeSlider=      Death Markers
   ModOptions_SteamTimeline_DeathMarkerModeSlider_Desc= Enable death events in the timeline for just Golden/Deathless deaths, or for all deaths.
-  ModOptions_SteamTimeline_RoomClearMarkers_Desc=      Add timeline markers on room transitions. May flood the timeline with markers in maps with short rooms.
+  ModOptions_SteamTimeline_RoomClearMarkers_Desc=      Controls how timeline markers for room clears display.{n}"Both" places both a marker glyph and a range for room clears.
 
 # Timeline Markers
   SteamTimeline_DeathMarker=                        You died

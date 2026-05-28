@@ -10,19 +10,31 @@ public static class RoomTransitionMarkers {
 
 		SteamTimeline.Session.RoomStartTime = currentTime;
 
-		if (!SteamTimeline.Settings.RoomClearMarkers || currentTime - roomStartTime < TimeSpan.FromSeconds(5))
+		if (SteamTimeline.Settings.RoomClearMarkers == SteamTimelineSettings.RoomClearMode.None ||
+		    currentTime - roomStartTime < TimeSpan.FromSeconds(5))
 			return;
 
-		AddTimelineMarker(
-			"steam_completed",
-			"RoomClearMarker".Localize()
-			                 .Replace("((roomName))", level.Session.LevelData.Name),
-			null,
-			1,
-			ClipPriority.Standard,
-			(float) (roomStartTime - currentTime).TotalSeconds,
-			(float) (currentTime - roomStartTime).TotalSeconds
-		);
+		var markerText = "RoomClearMarker".Localize().Replace("((roomName))", level.Session.LevelData.Name);
+
+		if (SteamTimeline.Settings.RoomClearMarkers.HasFlag(SteamTimelineSettings.RoomClearMode.Instant))
+			AddTimelineMarker(
+				"steam_completed",
+				markerText,
+				null,
+				1,
+				ClipPriority.Standard
+			);
+
+		if (SteamTimeline.Settings.RoomClearMarkers.HasFlag(SteamTimelineSettings.RoomClearMode.Range))
+			AddTimelineMarker(
+				"steam_completed",
+				markerText,
+				null,
+				1,
+				ClipPriority.Standard,
+				(float) (roomStartTime - currentTime).TotalSeconds,
+				(float) (currentTime - roomStartTime).TotalSeconds
+			);
 	}
 
 	// We want the marked range to start from the latest respawn, so we reset every spawn.
