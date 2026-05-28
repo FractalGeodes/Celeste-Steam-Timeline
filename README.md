@@ -13,6 +13,7 @@ Currently implemented are markers for:
   - Also for reaching Summit Flags which are internally called Summit Checkpoints :3
 - (Optionally) Deaths
 - (Also optionally) Room Clears (room transitions)
-  - Possibly support for only leaving a marker if you've been in a room for a certain amount of time
+  - Three different styles: Traditional "instant" markers, ranged markers, and a combination of both styles.
 - Timeline tooltip for the current level and optionally room
+- Timeline modes (timeline has different colours for the loading screen, menus, and actively playing a chapter)
 - Support for modded maps (as in localisations work fine, support for modded entities is not guarnteed)
