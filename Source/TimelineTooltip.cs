@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace Celeste.Mod.SteamTimeline;
 
@@ -23,7 +24,12 @@ public static class TimelineTooltip {
 		       .Trim();
 	}
 
-	private static void OnEnter(Session session, bool fromSaveData) => SetTimelineTooltip(LevelName(session));
+	private static void OnEnter(Session session, bool fromSaveData) {
+		try { SetTimelineTooltip(LevelName(session)); }
+		// session.LevelData fails if the specified level doesn't exist (i.e. disabled mod).
+		// This crashes through Everest's handling of a missing level for some reason. So we have to handle it as well.
+		catch (ArgumentOutOfRangeException) { }
+	}
 
 	// There's a joke one could make here.
 	private static void OnTransition(Level level, LevelData next, Vector2 direction) =>
