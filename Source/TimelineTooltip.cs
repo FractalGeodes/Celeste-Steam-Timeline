@@ -28,7 +28,10 @@ public static class TimelineTooltip {
 		try { SetTimelineTooltip(LevelName(session)); }
 		// session.LevelData fails if the specified level doesn't exist (i.e. disabled mod).
 		// This crashes through Everest's handling of a missing level for some reason. So we have to handle it as well.
-		catch (ArgumentOutOfRangeException) { }
+		catch (Exception e) {
+			Logger.Warn("SteamTimeline",
+				$"Encountered {e.GetType()} in `OnEnter`. If you just loaded a disabled map there's no problem here.");
+		}
 	}
 
 	// There's a joke one could make here.
