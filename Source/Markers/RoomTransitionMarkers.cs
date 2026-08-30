@@ -10,6 +10,11 @@ public static class RoomTransitionMarkers {
 
 		SteamTimeline.Session.RoomStartTime = currentTime;
 
+		// Ignore room transitions for golden runs
+		var player = level.Tracker.GetEntity<Player>();
+		if (player.Leader.Followers.Exists(follower => follower.Entity is Strawberry { Golden: true }))
+			return;
+
 		if (SteamTimeline.Settings.RoomClearMarkers == SteamTimelineSettings.RoomClearMode.None ||
 		    currentTime - roomStartTime < TimeSpan.FromSeconds(5))
 			return;
