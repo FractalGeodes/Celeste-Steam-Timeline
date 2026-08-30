@@ -5,6 +5,13 @@ public static class TimelineModes {
 	private static bool _paused;
 
 	private static void OnLevelEnter(Session session, bool fromSaveData) {
+		// Checks if the map is missing. No point changing the playing state
+		// if the map isn't going to load. This is kinda opinionated though.
+		// Failure for another reason still results in a broken state,
+		// but that's an alright enough compromise for me.
+		if (session.Area.GetSID() is null)
+			return;
+
 		SetTimelineMode(TimelineMode.Playing);
 		_paused = false;
 	}
