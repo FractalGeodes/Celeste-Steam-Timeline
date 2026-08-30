@@ -2,6 +2,12 @@
 
 public static class LevelCompleteMarker {
 	private static void OnLevelComplete(Level level) {
+		// We set this in StrawberryMarkers when the golden is collected, same time as that marker.
+		// Theoretically if you collect the golden and die this would persist and cancel again.
+		// I don't think this is a particularly big issue though.
+		if (SteamTimeline.Session.CollectedGolden)
+			return;
+
 		Session session = level.Session;
 		AreaData area = AreaData.Get(session);
 		AreaMode areaMode = session.Area.Mode;
