@@ -1,4 +1,5 @@
 ﻿using System;
+using Steamworks;
 
 namespace Celeste.Mod.SteamTimeline;
 
@@ -7,6 +8,13 @@ namespace Celeste.Mod.SteamTimeline;
 public class SteamTimeline : EverestModule {
 	public SteamTimeline() {
 		Instance = this;
+
+		try {
+			InteropHelp.TestIfAvailableClient();
+		}
+		catch (InvalidOperationException) {
+			SteamClientAvailable = false;
+		}
 #if DEBUG
 		// debug builds use verbose logging
 		Logger.SetLogLevel(nameof(SteamTimeline), LogLevel.Verbose);
@@ -15,6 +23,8 @@ public class SteamTimeline : EverestModule {
         Logger.SetLogLevel(nameof(SteamTimeline), LogLevel.Info);
 #endif
 	}
+
+	private static bool SteamClientAvailable { get; set; } = true;
 
 	// (Everest needs to use this)
 	// ReSharper disable once MemberCanBePrivate.Global
@@ -26,7 +36,17 @@ public class SteamTimeline : EverestModule {
 	public override Type SessionType => typeof(SteamTimelineSession);
 	public static SteamTimelineSession Session => (SteamTimelineSession) Instance._Session;
 
-	public override void Load() => LifecycleMethods.OnLoad();
+	public override void Load() {
+		if (!SteamClientAvailable) {
+			Logger.Warn("SteamTimeline", "Steam client is unavailable. Are you playing on a Steam copy?");
+			return;
+		}
 
-	public override void Unload() => LifecycleMethods.OnUnload();
+		LifecycleMethods.OnLoad();
+	}
+
+	public override void Unload() {
+		if (!SteamClientAvailable) return;
+		LifecycleMethods.OnUnload();
+	}
 }
