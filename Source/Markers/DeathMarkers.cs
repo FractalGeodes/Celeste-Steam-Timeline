@@ -20,14 +20,10 @@ public static class DeathMarkers {
 
 		DeathMarkerMode markerMode = SteamTimeline.Settings.DeathMarkerModeSlider;
 
-		// WORKAROUND: Until Everest pull request 1101 is merged we're doing this.
-
-		// if (wasGolden && markerMode.HasFlag(DeathMarkerMode.Goldens))
-		if (wasGolden && markerMode != DeathMarkerMode.Never)
+		if (wasGolden && markerMode.HasFlag(DeathMarkerMode.Goldens))
 			AddTimelineMarker("steam_death", "GoldenDeathMarker".Localize(), null, 1, ClipPriority.Standard);
 
-		// else if (markerMode.HasFlag(DeathMarkerMode.Always))
-		else if (markerMode == DeathMarkerMode.Always)
+		else if (markerMode.HasFlag(DeathMarkerMode.Always))
 			AddTimelineMarker("steam_death", "DeathMarker".Localize(), null, 0, ClipPriority.None);
 
 		return pdb;
